@@ -6,6 +6,8 @@ This image will be useless when Concourse CI will be able to automatically prune
 
 See [kubernetes-cronjob.yaml](kubernetes-cronjob.yaml) for an example on how to set up in kubernetes.
 
+Forked from https://github.com/cycloidio/cycloid-images 
+
 ## Configure
 
 | Env var name             | Required | Description                                           |
