@@ -1,0 +1,31 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: cleanup-workers
+spec:
+  # Run every 5 mins
+  schedule: "*/5 * * * *"
+  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 5
+  successfulJobsHistoryLimit: 5
+  jobTemplate:
+    spec:
+      completions: 1
+      backoffLimit: 0
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+          - name: cleanup-workers
+            image: phpdockerio/concourse-workers-cleaner
+            env:
+            - name: CONCOURSE_ADMIN_USERNAME
+              value: username
+            - name: CONCOURSE_ADMIN_PASSWORD
+              value: password
+            - name: CONCOURSE_TARGET
+              value: target
+            - name: CONCOURSE_TEAM
+              value: team
+            - name: CONCOURSE_URL
+              value: http://concourse:8080
