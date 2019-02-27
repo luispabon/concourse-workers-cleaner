@@ -2,7 +2,7 @@
 
 This image is here to clean Concourse CI workers using https://concourse.ci/fly-prune-worker.html .
 
-This image will be useless when Concourse CI will be able to automatically prune dead workers.
+If you're using Concourse >= 4.2, use the `--ephemeral` flag on the workers instead.
 
 See [kubernetes-cronjob.yaml](kubernetes-cronjob.yaml) for an example on how to set up in kubernetes.
 
